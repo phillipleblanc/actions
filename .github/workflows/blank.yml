@@ -9,8 +9,16 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Branch
+        run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
+      
+      - name: echo BRANCH
+        run: echo $BRANCH
+  
+  dump-context:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
