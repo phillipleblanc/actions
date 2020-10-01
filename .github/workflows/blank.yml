@@ -13,10 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set Branch
+        id: get_version
         run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
       
       - name: echo BRANCH
-        run: echo $BRANCH
+        run: echo ${{ steps.get_version.outputs.BRANCH }}
   
   dump-context:
     # The type of runner that the job will run on
